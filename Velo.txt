@@ -1,0 +1,71 @@
+// Velo API Reference: https://www.wix.com/velo/reference/api-overview/introduction
+import wixData from 'wix-data';
+
+$w.onReady(function () {
+
+	// Write your Javascript code here using the Velo framework API
+
+	// Print hello world:
+	// console.log("Hello world!");
+
+	// Call functions on page elements, e.g.:
+	// $w("#button1").label = "Click me!";
+
+	// Click "Run", or Preview your site, to execute your code
+
+	wixData.query("OG_Production")
+	.descending("reporting_year")
+	.find()
+	.then(res =>
+	{
+		$w("#table1").rows = res.items;
+	})
+	
+
+});
+
+export function input1_input(event) 
+{
+	wixData.query("OG_Production")
+	.contains("company_name", $w("#input1").value)
+	.or(
+		wixData.query("OG_Production")
+		.contains("county", $w("#input1").value)
+	)
+	.or(
+		wixData.query("OG_Production")
+		.contains("producing_formation", $w("#input1").value)
+	)
+	.or(
+		wixData.query("OG_Production")
+		.contains("production_field", $w("#input1").value)
+	)
+	.or(
+		wixData.query("OG_Production")
+		.contains("town", $w("#input1").value)
+	)
+	.or(
+		wixData.query("OG_Production")
+		.contains("well_name", $w("#input1").value)
+	)
+	.or(
+		wixData.query("OG_Production")
+		.contains("months_in_production", $w("#input1").value)
+	)
+	.or(
+		wixData.query("OG_Production")
+		.contains("gas_produced_mcf", $w("#input1").value)
+	)
+	.or(
+		wixData.query("OG_Production")
+		.contains("gas_produced_mcf", $w("#input1").value)
+	)
+	.descending("reporting_year")
+	.find()
+	.then(res =>
+	{
+		$w("#table1").rows = res.items;
+	})
+	
+}
+
